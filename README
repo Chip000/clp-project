@@ -1,0 +1,7 @@
+CLP project
+
+- using ilog CP Optimizer
+
+OBS :
+
+- init.sh : creates the obj directory
