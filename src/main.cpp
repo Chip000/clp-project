@@ -36,8 +36,8 @@ void usage(const char name[])
 
 	cout << "- b is the type of bounds for the problem.\n";
 	cout << "* " << DEF << "    - default bound.\n";
-	cout << "* " << REV_BR << " - reversal breakpoint bound.\n";
 	cout << "* " << TRA_BR << " - transposition breakpoint bound.\n";
+	cout << "* " << REV_BR << " - reversal breakpoint bound.\n";
 	cout << "* " << T_R_BR << " - transposition+reversal breakpoint bound.\n";
 	cout << "\n";
 
@@ -157,7 +157,7 @@ int main(int argc, const char *argv[])
 	}
 
 	if (ret == 0) {
-		cout << "Optimal Value: 0" << endl;
+		cout << "Optimal value: 0" << endl;
 	}
 
 	c_end = clock();
