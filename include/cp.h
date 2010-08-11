@@ -11,7 +11,7 @@
 class CP: public Prob {
  public:
 	/* Constructor */
- CP(int *P, int n, const char *bt):Prob(P, n, bt) {};
+	CP(int *, int, const char *);
 	/* Destructor */
 	~CP();
 

@@ -4,11 +4,14 @@
 
 #include "../include/cp.h"
 
+/* Constructor */
+CP::CP(int *P, int n, const char *bt):
+	Prob(P, n, bt) {};
+
 /* Destructor */
 CP::~CP()
 {
-	delete[] perm;
-	delete[] btype;
+	/* Using the Destructor from Prob */
 }
 
 /*
