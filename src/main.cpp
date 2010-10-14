@@ -120,7 +120,7 @@ int main(int argc, const char *argv[])
 			ret = prob.trans_dist_cop();
 		}
 		else if (strcmp(CSP, theory) == 0) {
-			/* TODO */
+			ret = prob.trans_dist_csp();
 		}
 		else {
 			cerr << ">> ERROR: Invalid type" << endl << endl;
@@ -132,7 +132,7 @@ int main(int argc, const char *argv[])
 			ret = prob.rev_dist_cop();
 		}
 		else if (strcmp(CSP, theory) == 0) {
-			/* TODO */
+			ret = prob.rev_dist_csp();
 		}
 		else {
 			cerr << ">> ERROR: Invalid type" << endl << endl;
@@ -144,7 +144,7 @@ int main(int argc, const char *argv[])
 			ret = prob.trans_rev_dist_cop();
 		}
 		else if (strcmp(CSP, theory) == 0) {
-			/* TODO */
+			ret = prob.trans_rev_dist_csp();
 		}
 		else {
 			cerr << ">> ERROR: Invalid type" << endl << endl;
