@@ -1,0 +1,13 @@
+--- Makefile	2010-10-14 21:29:33.000000000 -0300
++++ Makefile.new	2010-10-14 21:30:54.000000000 -0300
+@@ -3,8 +3,8 @@
+ ODIR=./obj
+ VPATH=./src
+ 
+-CONCERTDIR = /usr/local/ilog/concert29
+-CPOPTIMIZERDIR = /usr/local/ilog/cpoptimizer23
++CONCERTDIR = /home/victor/ilog/concert29
++CPOPTIMIZERDIR = /home/victor/ilog/cpoptimizer23
+ 
+ TARGET=clp_dist
+ 
