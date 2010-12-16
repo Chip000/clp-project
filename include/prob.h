@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <cstring>
+#include "../include/graph.h"
 
 #define DEBUG 1
 
@@ -18,6 +19,8 @@
 #define REV_BR "rev_br"
 #define TRA_BR "tra_br"
 #define T_R_BR "t_r_br"
+#define TRA_CG "tra_cg"
+#define T_R_CB "t_r_cb"
 
 class Prob {
  protected:
@@ -35,6 +38,9 @@ class Prob {
 
 	/* calc_breakpoint_rev */
 	void calc_breakpoint_rev(int P[], int n, int&lb, int &ub);
+
+	/* calc_cycle_graph_trans */
+	void calc_cycle_graph_trans(int P[], int n, int&lb, int &ub);
 
 	/* get_bound: Returns the model for the model bt. */
 	void get_bound(int P[], int n, const char *bt, 

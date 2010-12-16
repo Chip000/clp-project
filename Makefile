@@ -8,10 +8,10 @@ CPOPTIMIZERDIR = /usr/local/ilog/cpoptimizer23
 
 TARGET=clp_dist
 
-_DEPS = cp.h prob.h
+_DEPS = cp.h prob.h graph.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = main.o cp.o prob.o
+_OBJ = main.o cp.o prob.o graph.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 CFLAGS=-DIL_STD -O -DNDEBUG -I$(IDIR) -I$(CPOPTIMIZERDIR)/include	\

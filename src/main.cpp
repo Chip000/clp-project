@@ -39,6 +39,8 @@ void usage(const char name[])
 	cout << "* " << TRA_BR << " - transposition breakpoint bound.\n";
 	cout << "* " << REV_BR << " - reversal breakpoint bound.\n";
 	cout << "* " << T_R_BR << " - transposition+reversal breakpoint bound.\n";
+	cout << "* " << TRA_CG << " - transposition cycle graph.\n";
+	cout << "* " << T_R_CB << " - transposition+reversal best bound between breakpoint and cycle graph .\n";
 	cout << "\n";
 
 	cout << "- p is the given permutation.\n";
@@ -69,7 +71,7 @@ int *perm2int(const char perm[], int &n)
 	}
 
 	ptr = (char *) perm;
-	ret = new int[n];
+	ret = new int[n+1];
 	tmp = 0;
 	while (stringstream(ptr) >> ret[tmp]) {
 		ptr +=2; /* ignoring the space */
@@ -91,6 +93,8 @@ int main(int argc, const char *argv[])
 	int perm_size;
 	int ret;
 
+	int a,b;
+
 	clock_t c_begin;
 	clock_t c_end;
 
@@ -110,6 +114,8 @@ int main(int argc, const char *argv[])
 
 	/* Creating the object problem */
 	CP prob(perm, perm_size, btype);
+
+	prob.calc_cycle_graph_trans(perm, perm_size, a, b);
 
 	cout << endl;
 
