@@ -3,6 +3,7 @@
 #include <ctime>
 #include <cstdio>
 #include "../include/cp.h"
+#include "../include/f_edge.h"
 
 using namespace std;
 
@@ -36,11 +37,17 @@ void usage(const char name[])
 
 	cout << "- b is the type of bounds for the problem.\n";
 	cout << "* " << DEF << "    - default bound.\n";
+
 	cout << "* " << TRA_BR << " - transposition breakpoint bound.\n";
-	cout << "* " << REV_BR << " - reversal breakpoint bound.\n";
-	cout << "* " << T_R_BR << " - transposition+reversal breakpoint bound.\n";
 	cout << "* " << TRA_CG << " - transposition cycle graph.\n";
+
+	cout << "* " << REV_BR << " - reversal breakpoint bound.\n";
+	cout << "* " << REV_CG << " - reversal cycle graph.\n";
+
+	cout << "* " << T_R_BR << " - transposition+reversal breakpoint bound.\n";
 	cout << "* " << T_R_CB << " - transposition+reversal best bound between breakpoint and cycle graph .\n";
+	cout << "* " << T_R_CC << " - transposition+reversal best bound between cycle graph .\n";
+
 	cout << "\n";
 
 	cout << "- p is the given permutation.\n";
@@ -93,8 +100,6 @@ int main(int argc, const char *argv[])
 	int perm_size;
 	int ret;
 
-	int a,b;
-
 	clock_t c_begin;
 	clock_t c_end;
 
@@ -114,10 +119,6 @@ int main(int argc, const char *argv[])
 
 	/* Creating the object problem */
 	CP prob(perm, perm_size, btype);
-
-	prob.calc_cycle_graph_trans(perm, perm_size, a, b);
-
-	cout << endl;
 
 	ret = -1;
 

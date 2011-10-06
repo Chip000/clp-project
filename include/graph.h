@@ -1,5 +1,5 @@
 /*
- * graph.h> A simple graph class
+ * graph.h A simple graph class
  */
 
 #ifndef HAVE_GRAPH_H
@@ -31,6 +31,10 @@ class Graph {
 	int *get_vertices_array();
 	/* set_vertices_array */
 	int set_vertices_array(int V[], int n);
+	/* set_vertices_array */
+	int set_vertices_array(int n);
+	/* get_vertex_pos */
+	int get_vertex_pos(int v);
 	/* free_vertices_array */
 	void free_vertices_array();
 	/* create_adj_matrix */

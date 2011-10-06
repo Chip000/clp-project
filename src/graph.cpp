@@ -55,6 +55,39 @@ int Graph::set_vertices_array(int V[], int n)
 	return SUCCESS;
 } /* set_vertices_array */
 
+/* set_vertices_array */
+int Graph::set_vertices_array(int n)
+{
+	int i;
+
+	if (this->num_vertices != n) {
+		return FAILURE;
+	}
+	
+	this->label = new int[n];
+
+	for (i = 0; i < n; i++) {
+		this->label[i] = i;
+	}
+
+	return SUCCESS;
+} /* set_vertices_array */
+
+/* get_vertex_pos */
+int Graph::get_vertex_pos(int v)
+{
+	int pos;
+
+	for (pos = 0; pos < this->num_vertices; pos++) {
+		if (this->label[pos] == v) {
+			break;
+		}
+	}
+
+	return pos;
+
+} /* get_vertex_pos */
+
 /* free_vertices_array */
 void Graph::free_vertices_array()
 {
