@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
-#include <ctime>
 #include <cstdio>
+#include <sys/time.h>
 #include "../include/cp.h"
 #include "../include/f_edge.h"
 
@@ -100,10 +100,9 @@ int main(int argc, const char *argv[])
 	int perm_size;
 	int ret;
 
-	clock_t c_begin;
-	clock_t c_end;
-
-	c_begin = clock();
+	struct timeval c_begin;
+	struct timeval c_end;
+	gettimeofday(&c_begin, NULL);
 
 	if (argc < 5) {
 		usage(argv[0]);
@@ -167,10 +166,10 @@ int main(int argc, const char *argv[])
 		cout << "Optimal value: 0" << endl;
 	}
 
-	c_end = clock();
-
+	gettimeofday(&c_end, NULL);
+	/* time in seconds */
 	fprintf(stdout, "Total Time: %.4f\n",
-		(double) (c_end - c_begin) / CLOCKS_PER_SEC);
+		(double) (c_end.tv_usec - c_begin.tv_usec) / 1000000);
 
 	cout << endl;
 
