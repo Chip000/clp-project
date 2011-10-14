@@ -69,22 +69,23 @@ int *perm2int(const char perm[], int &n)
 	char *ptr;
 	int tmp;
 	int *ret;
-	
+
 	ptr = (char *) perm;
 	n = 0;
-	while (stringstream(ptr) >> tmp) {
+
+	istringstream tmp_iss(ptr);
+	while (tmp_iss >> tmp) {
 		n++;
-		ptr +=2; /* ignoring the space */
 	}
 
 	ptr = (char *) perm;
 	ret = new int[n+1];
 	tmp = 0;
-	while (stringstream(ptr) >> ret[tmp]) {
-		ptr +=2; /* ignoring the space */
+	istringstream iss(ptr);
+	while (iss >> ret[tmp]) {
 		tmp ++;
 	}
-	
+
 	return ret;
 
 } /* perm2int */

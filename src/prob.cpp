@@ -305,39 +305,6 @@ void Prob::calc_breakpoint_trans(int P[], int n, int&lb, int &ub)
 
 } /* calc_breakpoint_trans */
 
-
-/*
- * calc_breakpoint_rev
- */
-void Prob::calc_breakpoint_rev(int P[], int n, int&lb, int &ub)
-{
-	int i;
-	int b;
-
-	b = 0;
-
-	if (P[0] != 1) {
-		b = 1;
-	}
-
-	for (i = 0; i < n-1; i++) {
-		if ((P[i+1] != P[i] + 1) && 
-		    (P[i+1] != P[i] - 1)) {
-			b++;
-		}
-	}
-
-	if (n+1 != P[n-1] + 1) {
-		b++;
-	}
-
-	lb = b / 2;
-	ub = b;
-
-	return;
-
-} /* calc_breakpoint_rev */
-
 /*
  * calc_cycle_graph_trans
  */
@@ -389,6 +356,93 @@ void Prob::calc_cycle_graph_trans(int P[], int n, int&lb, int &ub)
 	return;
 
 } /* calc_cycle_graph_trans */
+
+/*
+ * calc_graph_perm_trans
+ */
+void Prob::calc_graph_perm_trans(int P[], int n, int&lb, int &ub)
+{
+	/* TODO 
+
+	int i;
+	int c;
+	int v;
+	Graph G;
+	int *Pext = new int[n * 2 + 2];
+	int *Ext =  new int[n + 2];
+
+	v = n * 2 + 2;
+
+	Pext[0] = 0;
+	for (i = 0; i < n; i++) {
+		Pext[i*2 + 1] = -P[i];
+		Pext[i*2 + 2] = P[i]; 
+	}
+	Pext[v-1] = - (n + 1); 
+
+	G.set_num_vertices(v);
+	G.set_vertices_array(Pext, v);
+	G.create_adj_matrix();
+
+	Ext[0] = 0;
+	for (i = 1; i < n+1; i++) {
+		Ext[i] = P[i-1];
+	}
+	Ext[n+1] = n + 1;
+
+	for (i = 1; i <= n+1; i++) {
+		G.add_edge(i-1, -i, GRAY);
+		G.add_edge(-Ext[i], Ext[i-1], BLACK);
+	}
+
+	int **M = G.get_adj_matrix();
+
+	c = count_odd_cycles(M, v);
+
+	G.free_vertices_array();
+	G.free_adj_matrix();
+	delete Pext;
+	delete Ext;
+
+	lb = (n + 1 - c) / 2;
+	ub = (3 * (n + 1 - c)) / 4;
+
+	*/
+	return;
+
+} /* calc_graph_perm_trans */
+
+/*
+ * calc_breakpoint_rev
+ */
+void Prob::calc_breakpoint_rev(int P[], int n, int&lb, int &ub)
+{
+	int i;
+	int b;
+
+	b = 0;
+
+	if (P[0] != 1) {
+		b = 1;
+	}
+
+	for (i = 0; i < n-1; i++) {
+		if ((P[i+1] != P[i] + 1) && 
+		    (P[i+1] != P[i] - 1)) {
+			b++;
+		}
+	}
+
+	if (n+1 != P[n-1] + 1) {
+		b++;
+	}
+
+	lb = b / 2;
+	ub = b;
+
+	return;
+
+} /* calc_breakpoint_rev */
 
 /*
  * calc_cycle_graph_rev
@@ -588,6 +642,9 @@ void Prob::get_bound(int P[], int n, const char *bt,
 	}
 	else if (strcmp(bt, TRA_CG) == 0) {
 		calc_cycle_graph_trans(P, n, lb, ub);
+	}
+	else if (strcmp(bt, TRA_CG) == 0) {
+		calc_graph_perm_trans(P, n, lb, ub);
 	}
 	else if (strcmp(bt, REV_BR) == 0) {
 		calc_breakpoint_rev(P, n, lb, ub);
