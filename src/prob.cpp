@@ -658,7 +658,7 @@ void Prob::get_bound(int P[], int n, const char *bt,
 		calc_breakpoint_trans(P, n, tlb, tub);
 		calc_breakpoint_rev(P, n, rlb, rub);
 
-		lb = ((tlb <= rlb) ? tlb : rlb);
+		lb = 0; //((tlb <= rlb) ? tlb : rlb);
 		ub = ((tub <= rub) ? tub : rub);
 	}
 	else if (strcmp(bt, T_R_CB) == 0) {
@@ -667,7 +667,7 @@ void Prob::get_bound(int P[], int n, const char *bt,
 		calc_cycle_graph_trans(P, n, tlb, tub);
 		calc_breakpoint_rev(P, n, rlb, rub);
 
-		lb = ((tlb <= rlb) ? tlb : rlb);
+		lb = 0; //((tlb <= rlb) ? tlb : rlb);
 		ub = ((tub <= rub) ? tub : rub);
 	}
 	else if (strcmp(bt, T_R_CC) == 0) {
@@ -676,7 +676,7 @@ void Prob::get_bound(int P[], int n, const char *bt,
 		calc_cycle_graph_trans(P, n, tlb, tub);
 		calc_cycle_graph_rev(P, n, rlb, rub);
 
-		lb = ((tlb <= rlb) ? tlb : rlb);
+		lb = 0; //((tlb <= rlb) ? tlb : rlb);
 		ub = ((tub <= rub) ? tub : rub);
 	}
 
